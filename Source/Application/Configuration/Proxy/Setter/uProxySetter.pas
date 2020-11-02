@@ -1,9 +1,9 @@
-unit ProxySetter;
+unit uProxySetter;
 
 interface
 
 uses
-  ProxyRepository, ProxyDTO, Proxy;
+  uIProxyRepository, uProxyDTO, uProxy;
 
 type
   TProxySetter = class

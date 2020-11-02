@@ -1,4 +1,4 @@
-unit FormTester;
+unit uFormProxy;
 
 interface
 
@@ -7,15 +7,14 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
-  TForm1 = class(TForm)
+  TFormProxy = class(TForm)
     LabeledEdit_Uri: TLabeledEdit;
     LabeledEdit_Port: TLabeledEdit;
     LabeledEdit_User: TLabeledEdit;
     LabeledEdit_Password: TLabeledEdit;
     Button_Save: TButton;
-    Button_Refresh: TButton;
-    procedure FormCreate(Sender: TObject);
-    procedure Button_RefreshClick(Sender: TObject);
+    Button_Load: TButton;
+    procedure Button_LoadClick(Sender: TObject);
     procedure Button_SaveClick(Sender: TObject);
   private
     { Private declarations }
@@ -27,39 +26,31 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormProxy: TFormProxy;
 
 implementation
 
 uses
-  ProxyGetter, ProxySetter, ProxyDTO, ProxyRepository,
+  uIProxyGetter, uProxySetter, uProxyDTO, uIProxyRepository,
   Spring.Container, Spring;
 
 {$R *.dfm}
 
-procedure TForm1.Button_RefreshClick(Sender: TObject);
+procedure TFormProxy.Button_LoadClick(Sender: TObject);
 begin
   self.LoadProxy;
 end;
 
-procedure TForm1.Button_SaveClick(Sender: TObject);
+procedure TFormProxy.Button_SaveClick(Sender: TObject);
 begin
   self.SaveProxy;
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
-  Self.LoadProxy;
-end;
-
-procedure TForm1.LoadProxy;
+procedure TFormProxy.LoadProxy;
 var
-  proxyGetter:TProxyGetter;
   proxyDTO:TProxyDTO;
 begin
-  proxyGetter:=TProxyGetter.Create(GlobalContainer.Resolve<IProxyRepository>);
-  proxyDTO:=proxyGetter.Invoke;
-  proxyGetter.Free;
+  proxyDTO:=GlobalContainer.Resolve<IProxyGetter>.Invoke;
 
   self.LabeledEdit_Uri.Text:=proxyDTO.Uri;
   self.LabeledEdit_Port.Text:=proxyDTO.Port.ToString;
@@ -68,7 +59,7 @@ begin
   proxyDTO.Free;
 end;
 
-procedure TForm1.SaveProxy;
+procedure TFormProxy.SaveProxy;
 var
   proxyDTO:TProxyDTO;
   proxySetter:TProxySetter;
@@ -85,7 +76,7 @@ begin
   proxyDTO.Free;
 end;
 
-procedure TForm1.ValidateValues;
+procedure TFormProxy.ValidateValues;
 var
   port:Integer;
 begin

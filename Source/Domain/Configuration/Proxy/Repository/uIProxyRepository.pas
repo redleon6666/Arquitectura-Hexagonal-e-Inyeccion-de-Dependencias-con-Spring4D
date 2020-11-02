@@ -1,9 +1,9 @@
-unit ProxyRepository;
+unit uIProxyRepository;
 
 interface
 
 uses
-  Proxy;
+  uProxy;
 
 type
   IProxyRepository = interface

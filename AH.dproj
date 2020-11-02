@@ -75,6 +75,9 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=Red Leon 2020;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -90,17 +93,18 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Source\Frontend\FormTester.pas">
-            <Form>Form1</Form>
+        <DCCReference Include="Source\Infrastructure\Configuration\Proxy\uFormProxy.pas">
+            <Form>FormProxy</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Source\Configuration\Domain\Proxy\Entity\Proxy.pas"/>
-        <DCCReference Include="Source\Configuration\Domain\Proxy\Interface\ProxyRepository.pas"/>
-        <DCCReference Include="Source\Configuration\Application\Proxy\Entity\ProxyDTO.pas"/>
-        <DCCReference Include="Source\Configuration\Application\Proxy\Getter\ProxyGetter.pas"/>
-        <DCCReference Include="Source\Configuration\Application\Proxy\Setter\ProxySetter.pas"/>
-        <DCCReference Include="Source\Configuration\Infrastructure\Proxy\FromIniFileProxyRepository.pas"/>
         <DCCReference Include="Source\DependencyInjection\uRegistrationConfiguration.pas"/>
+        <DCCReference Include="Source\Domain\Configuration\Proxy\Entity\uProxy.pas"/>
+        <DCCReference Include="Source\Application\Configuration\Proxy\Entity\uProxyDTO.pas"/>
+        <DCCReference Include="Source\Application\Configuration\Proxy\Getter\uIProxyGetter.pas"/>
+        <DCCReference Include="Source\Application\Configuration\Proxy\Getter\uProxyGetter.pas"/>
+        <DCCReference Include="Source\Application\Configuration\Proxy\Setter\uProxySetter.pas"/>
+        <DCCReference Include="Source\Domain\Configuration\Proxy\Repository\uIProxyRepository.pas"/>
+        <DCCReference Include="Source\Infrastructure\Configuration\Proxy\Repository\uFromIniFileProxyRepository.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -121,6 +125,10 @@
                 <Source>
                     <Source Name="MainSource">AH.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="Win32\Debug\AH.exe" Configuration="Debug" Class="ProjectOutput">

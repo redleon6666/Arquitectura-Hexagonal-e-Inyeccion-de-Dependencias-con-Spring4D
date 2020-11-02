@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormProxy: TFormProxy
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
@@ -14,7 +14,6 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object LabeledEdit_Uri: TLabeledEdit
@@ -67,13 +66,13 @@ object Form1: TForm1
     TabOrder = 4
     OnClick = Button_SaveClick
   end
-  object Button_Refresh: TButton
+  object Button_Load: TButton
     Left = 8
     Top = 145
     Width = 75
     Height = 25
-    Caption = 'Refresh'
+    Caption = 'Load'
     TabOrder = 5
-    OnClick = Button_RefreshClick
+    OnClick = Button_LoadClick
   end
 end

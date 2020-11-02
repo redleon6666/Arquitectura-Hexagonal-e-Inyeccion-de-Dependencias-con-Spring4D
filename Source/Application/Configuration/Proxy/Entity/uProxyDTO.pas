@@ -1,9 +1,9 @@
-unit Proxy;
+unit uProxyDTO;
 
 interface
 
 type
-  TProxy = class
+  TProxyDTO = class
   private
     FPort: Integer;
     FPassword: String;
@@ -20,9 +20,10 @@ type
 
 implementation
 
-{ TProxy }
+{ TProxyDTO }
 
-constructor TProxy.Create(Uri: String; Port: Integer; User, Password: String);
+constructor TProxyDTO.Create(Uri: String; Port: Integer;
+  User, Password: String);
 begin
   self.FUri := Uri;
   self.FPort := Port;

@@ -7,7 +7,8 @@ procedure RegisterClassesAnInterfacesConfiguration;
 implementation
 
 uses
-  Spring.Container, ProxyRepository, FromIniFileProxyRepository;
+  Spring.Container, uIProxyRepository, uFromIniFileProxyRepository,
+  uProxyGetter, uIProxyGetter;
 
 procedure RegisterClassesAnInterfacesConfiguration;
 begin
@@ -17,6 +18,7 @@ begin
       begin
         Result := TFromIniFileProxyRepository.Create('c:\ProgramData\MyProxyConfiguration.ini');
       end);
+  GlobalContainer.RegisterType<IProxyGetter,TProxyGetter>.AsTransient;
   GlobalContainer.Build;
 end;
 

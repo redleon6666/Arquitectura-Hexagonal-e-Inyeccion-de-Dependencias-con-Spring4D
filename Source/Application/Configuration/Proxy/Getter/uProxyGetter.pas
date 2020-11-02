@@ -1,27 +1,38 @@
-unit ProxyGetter;
+unit uProxyGetter;
 
 interface
 
 uses
-  ProxyRepository, ProxyDTO, Proxy;
+  uIProxyRepository, uProxyDTO, uProxy, uIProxyGetter;
 
 type
-  TProxyGetter = class
+  TProxyGetter = class (TInterfacedObject, IProxyGetter)
   private
     FIProxyRepository: IProxyRepository;
     function ParseToDTO(Value: TProxy): TProxyDTO;
   public
     constructor Create(Value: IProxyRepository);
+    destructor Destroy; override;
     function Invoke: TProxyDTO;
   end;
 
 implementation
+
+uses
+  Dialogs;
 
 { TProxyGetter }
 
 constructor TProxyGetter.Create(Value: IProxyRepository);
 begin
   Self.FIProxyRepository := Value;
+  ShowMessage('TProxyGetter.Create');
+end;
+
+destructor TProxyGetter.Destroy;
+begin
+  inherited;
+  ShowMessage('TProxyGetter.Destroy');
 end;
 
 function TProxyGetter.Invoke: TProxyDTO;
