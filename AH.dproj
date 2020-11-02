@@ -97,7 +97,7 @@
             <Form>FormProxy</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Source\DependencyInjection\uRegistrationConfiguration.pas"/>
+        <DCCReference Include="Source\Infrastructure\DependencyInjection\uRegistrationConfiguration.pas"/>
         <DCCReference Include="Source\Domain\Configuration\Proxy\Entity\uProxy.pas"/>
         <DCCReference Include="Source\Application\Configuration\Proxy\Entity\uProxyDTO.pas"/>
         <DCCReference Include="Source\Application\Configuration\Proxy\Getter\uIProxyGetter.pas"/>

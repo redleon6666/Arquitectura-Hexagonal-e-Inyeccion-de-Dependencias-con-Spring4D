@@ -3,7 +3,7 @@ program AH;
 uses
   Vcl.Forms,
   uFormProxy in 'Source\Infrastructure\Configuration\Proxy\uFormProxy.pas' {FormProxy},
-  uRegistrationConfiguration in 'Source\DependencyInjection\uRegistrationConfiguration.pas',
+  uRegistrationConfiguration in 'Source\Infrastructure\DependencyInjection\uRegistrationConfiguration.pas',
   uProxy in 'Source\Domain\Configuration\Proxy\Entity\uProxy.pas',
   uProxyDTO in 'Source\Application\Configuration\Proxy\Entity\uProxyDTO.pas',
   uIProxyGetter in 'Source\Application\Configuration\Proxy\Getter\uIProxyGetter.pas',
