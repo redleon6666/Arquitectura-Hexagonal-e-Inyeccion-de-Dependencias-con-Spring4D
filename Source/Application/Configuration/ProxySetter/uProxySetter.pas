@@ -12,16 +12,27 @@ type
     function ParseToDomain(Value: TProxyDTO): TProxy;
   public
     constructor Create(Value: IProxyRepository);
+    destructor Destroy; override;
     procedure Invoke(Value: TProxyDTO);
   end;
 
 implementation
+
+uses
+  Dialogs;
 
 { TProxySetter }
 
 constructor TProxySetter.Create(Value: IProxyRepository);
 begin
   Self.FIProxyRepository := Value;
+  ShowMessage('TProxySetter.Create');
+end;
+
+destructor TProxySetter.Destroy;
+begin
+  inherited;
+  ShowMessage('TProxySetter.Destroy');
 end;
 
 procedure TProxySetter.Invoke(Value: TProxyDTO);

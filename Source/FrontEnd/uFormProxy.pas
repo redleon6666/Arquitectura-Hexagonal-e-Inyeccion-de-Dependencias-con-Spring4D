@@ -70,10 +70,20 @@ begin
     StrToInt(self.LabeledEdit_Port.Text),
     self.LabeledEdit_User.Text,
     self.LabeledEdit_Password.Text);
-  proxySetter:=TProxySetter.Create(GlobalContainer.Resolve<IProxyRepository>);
+
+// Forma 1 obteniendo el repository del inyector sin registrar el caso de uso.
+//  proxySetter:=TProxySetter.Create(GlobalContainer.Resolve<IProxyRepository>);
+//  proxySetter.Invoke(proxyDTO);
+//  proxySetter.Free;
+
+// Forma 2 obteinendo el caso de uso del inyector. Las dependias se inyectan automaticamente
+// pero no se autolibera.
+//  GlobalContainer.Resolve<TProxySetter>.Invoke(proxyDTO);
+
+// Lo correcto sería asi:
+  proxySetter:=GlobalContainer.Resolve<TProxySetter>;
   proxySetter.Invoke(proxyDTO);
   proxySetter.Free;
-  proxyDTO.Free;
 end;
 
 procedure TFormProxy.ValidateValues;
