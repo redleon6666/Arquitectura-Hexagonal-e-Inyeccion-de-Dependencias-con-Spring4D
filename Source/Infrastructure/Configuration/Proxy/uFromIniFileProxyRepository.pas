@@ -13,8 +13,8 @@ type
   public
     constructor Create(FileName: String);
     destructor Destroy; override;
-    function Getter: TProxy;
-    procedure Setter(const Proxy: TProxy);
+    function Load: TProxy;
+    procedure Save(const Proxy: TProxy);
   end;
 
 implementation
@@ -37,7 +37,7 @@ begin
   ShowMessage('TFromIniFileProxyRepository.Destroy');
 end;
 
-function TFromIniFileProxyRepository.Getter: TProxy;
+function TFromIniFileProxyRepository.Load: TProxy;
 var
   iniFile: TIniFile;
 begin
@@ -53,7 +53,7 @@ begin
   Result := Self.FCachedProxy;
 end;
 
-procedure TFromIniFileProxyRepository.Setter(const Proxy: TProxy);
+procedure TFromIniFileProxyRepository.Save(const Proxy: TProxy);
 var
   iniFile: TIniFile;
 begin

@@ -3,9 +3,13 @@ unit uProxyGetter;
 interface
 
 uses
-  uIProxyRepository, uProxyDTO, uProxy, uIProxyGetter;
+  uIProxyRepository, uProxyDTO, uProxy;
 
 type
+  IProxyGetter = interface ['{17F90378-6763-46F6-8A09-DE0D14A467A5}']
+    function Invoke: TProxyDTO;
+  end;
+
   TProxyGetter = class (TInterfacedObject, IProxyGetter)
   private
     FIProxyRepository: IProxyRepository;
@@ -37,7 +41,7 @@ end;
 
 function TProxyGetter.Invoke: TProxyDTO;
 begin
-  Result := Self.ParseToDTO(Self.FIProxyRepository.Getter);
+  Result := Self.ParseToDTO(Self.FIProxyRepository.Load);
 end;
 
 function TProxyGetter.ParseToDTO(Value: TProxy): TProxyDTO;

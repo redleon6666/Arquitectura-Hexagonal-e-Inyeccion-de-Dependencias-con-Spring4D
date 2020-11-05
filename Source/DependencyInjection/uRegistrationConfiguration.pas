@@ -8,7 +8,7 @@ implementation
 
 uses
   Spring.Container, uIProxyRepository, uFromIniFileProxyRepository,
-  uProxyGetter, uIProxyGetter;
+  uProxyGetter;
 
 procedure RegisterClassesAnInterfacesConfiguration;
 begin

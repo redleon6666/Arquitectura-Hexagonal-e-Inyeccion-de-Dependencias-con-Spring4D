@@ -31,7 +31,7 @@ var
 implementation
 
 uses
-  uIProxyGetter, uProxySetter, uProxyDTO, uIProxyRepository,
+  uProxyGetter, uProxySetter, uProxyDTO, uIProxyRepository,
   Spring.Container, Spring;
 
 {$R *.dfm}

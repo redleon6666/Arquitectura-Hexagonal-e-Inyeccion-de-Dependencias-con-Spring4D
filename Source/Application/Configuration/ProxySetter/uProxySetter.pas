@@ -26,7 +26,7 @@ end;
 
 procedure TProxySetter.Invoke(Value: TProxyDTO);
 begin
-  Self.FIProxyRepository.Setter(Self.ParseToDomain(Value));
+  Self.FIProxyRepository.Save(Self.ParseToDomain(Value));
 end;
 
 function TProxySetter.ParseToDomain(Value: TProxyDTO): TProxy;
