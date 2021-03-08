@@ -78,6 +78,9 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=Red Leon 2020;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <DCC_UNSAFE_CODE>true</DCC_UNSAFE_CODE>
+        <DCC_UNSAFE_TYPE>true</DCC_UNSAFE_TYPE>
+        <DCC_UNSAFE_CAST>true</DCC_UNSAFE_CAST>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -104,6 +107,28 @@
         <DCCReference Include="Source\Domain\Configuration\uIProxyRepository.pas"/>
         <DCCReference Include="Source\Infrastructure\Configuration\Proxy\uFromIniFileProxyRepository.pas"/>
         <DCCReference Include="Source\Infrastructure\uApplicationResources.pas"/>
+        <DCCReference Include="Source\Infrastructure\EventBus\EventBus.Core.pas"/>
+        <DCCReference Include="Source\Infrastructure\EventBus\EventBus.Helpers.pas"/>
+        <DCCReference Include="Source\Infrastructure\EventBus\EventBus.pas"/>
+        <DCCReference Include="Source\Infrastructure\EventBus\EventBus.Subscribers.pas"/>
+        <DCCReference Include="Source\Domain\Shared\uAggregateRoot.pas"/>
+        <DCCReference Include="Source\Domain\Shared\uDomainEvent.pas"/>
+        <DCCReference Include="Source\Application\Courses\CourseCreator\uCourseCreator.pas"/>
+        <DCCReference Include="Source\Domain\Courses\uICourseRepository.pas"/>
+        <DCCReference Include="Source\Domain\Courses\uCourse.pas"/>
+        <DCCReference Include="Source\Domain\Courses\uCourseCreatedDomainEvent.pas"/>
+        <DCCReference Include="Source\Domain\Shared\uIDomainEventBus.pas"/>
+        <DCCReference Include="Source\Infrastructure\DomainEventBus\uInMemoryDomainEventBus.pas"/>
+        <DCCReference Include="Source\FrontEnd\uFormCourseCreator.pas">
+            <Form>FormCourseCreator</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Source\FrontEnd\uFormMain.pas">
+            <Form>FormMain</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Source\Infrastructure\Courses\uInMemoryCourseRepository.pas"/>
+        <DCCReference Include="Source\Infrastructure\DomainEventBus\uEvent.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

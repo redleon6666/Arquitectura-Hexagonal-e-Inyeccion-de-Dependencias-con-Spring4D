@@ -8,7 +8,9 @@ implementation
 
 uses
   Spring.Container, uIProxyRepository, uFromIniFileProxyRepository,
-  uProxyGetter, uProxySetter, uApplicationResources;
+  uProxyGetter, uProxySetter, uApplicationResources,
+  uICourseRepository, uInMemoryCourseRepository, uCourseCreator,
+  uIDomainEventBus, uInMemoryDomainEventBus;
 
 procedure RegisterClassesAnInterfacesConfiguration;
 begin
@@ -23,6 +25,12 @@ begin
       end);
   GlobalContainer.RegisterType<IProxyGetter,TProxyGetter>.AsTransient;
   GlobalContainer.RegisterType<TProxySetter>.AsTransient;
+
+  GlobalContainer.RegisterType<ICourseRepository, TInMemoryCourseRepository>.AsSingleton;
+  GlobalContainer.RegisterType<TCourseCreator>;
+
+  GlobalContainer.RegisterType<IDomainEventBus, TInMemoryDomainEventBus>.AsSingleton;
+
   GlobalContainer.Build;
 end;
 
