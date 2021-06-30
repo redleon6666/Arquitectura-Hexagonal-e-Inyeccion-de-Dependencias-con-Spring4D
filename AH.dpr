@@ -27,7 +27,9 @@ uses
   uFormCourseCreator in 'Source\FrontEnd\uFormCourseCreator.pas' {FormCourseCreator},
   uFormMain in 'Source\FrontEnd\uFormMain.pas' {FormMain},
   uInMemoryCourseRepository in 'Source\Infrastructure\Courses\uInMemoryCourseRepository.pas',
-  uEvent in 'Source\Infrastructure\DomainEventBus\uEvent.pas';
+  uEvent in 'Source\Infrastructure\DomainEventBus\uEvent.pas',
+  IncrementCoursesCounterOnCourseCreated in 'Source\Application\Courses\IncrementCoursesCounterOnCourseCreated.pas',
+  AHAttribute in 'Source\Domain\Shared\AHAttribute.pas';
 
 {$R *.res}
 

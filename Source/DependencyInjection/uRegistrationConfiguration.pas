@@ -10,7 +10,7 @@ uses
   Spring.Container, uIProxyRepository, uFromIniFileProxyRepository,
   uProxyGetter, uProxySetter, uApplicationResources,
   uICourseRepository, uInMemoryCourseRepository, uCourseCreator,
-  uIDomainEventBus, uInMemoryDomainEventBus;
+  uIDomainEventBus, uInMemoryDomainEventBus, IncrementCoursesCounterOnCourseCreated;
 
 procedure RegisterClassesAnInterfacesConfiguration;
 begin
@@ -30,6 +30,9 @@ begin
   GlobalContainer.RegisterType<TCourseCreator>;
 
   GlobalContainer.RegisterType<IDomainEventBus, TInMemoryDomainEventBus>.AsSingleton;
+
+
+  GlobalContainer.RegisterType<TIncrementCoursesCounterOnCourseCreated>.AsSingleton;
 
   GlobalContainer.Build;
 end;
