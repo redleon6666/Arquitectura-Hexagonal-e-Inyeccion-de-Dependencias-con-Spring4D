@@ -10,11 +10,13 @@ type
   private
     FId: Integer;
     FName: String;
-    constructor New(Id:Integer; Name:String); overload;
+    FDuration: TDateTime;
+    constructor New(Id:Integer; Name:String; Duration: TDateTime); overload;
   public
     property Id: Integer read FId;
     property Name: String read FName;
-    class function Create(Id:Integer; Name:String):TCourse; reintroduce;
+    property Duration: TDateTime read FDuration;
+    class function Create(Id:Integer; Name:String; Duration: TDateTime):TCourse; reintroduce;
   end;
 
 implementation
@@ -24,17 +26,18 @@ uses
 
 { TCourse }
 
-constructor TCourse.New(Id: Integer; Name: String);
+constructor TCourse.New(Id: Integer; Name: String; Duration: TDateTime);
 begin
   inherited Create();
   Self.FId := Id;
   Self.FName := Name;
+  Self.FDuration := Duration;
 end;
 
-class function TCourse.Create(Id:Integer; Name:String): TCourse;
+class function TCourse.Create(Id:Integer; Name:String; Duration: TDateTime): TCourse;
 begin
-  Result := Self.New(Id, Name);
-  Result.RecordDomainEvent(TCourseCreatedDomainEvent.Create(Id.ToString, Name));
+  Result := Self.New(Id, Name, Duration);
+  Result.RecordDomainEvent(TCourseCreatedDomainEvent.Create(Id.ToString, Name, Duration));
 end;
 
 

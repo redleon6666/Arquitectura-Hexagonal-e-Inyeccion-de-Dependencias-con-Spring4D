@@ -18,7 +18,7 @@ type
 implementation
 
 uses
-  EventBus, uEvent, uCourseCreatedDomainEvent;
+  EventBus, uEvent, uCourseCreatedDomainEvent, Rtti;
 
 { TInMemoryDomainEventBus }
 
@@ -44,12 +44,18 @@ end;
 
 procedure TInMemoryDomainEventBus.Publish(Event: TDomainEvent);
 var
-  courseCreatedDomainEvent:TEvent<TCourseCreatedDomainEvent>;
+  courseCreatedDomainEvent, test2:TEvent<TCourseCreatedDomainEvent>;
+  body: TDictionary<string,TValue>;
+  ev1, ev2: TCourseCreatedDomainEvent;
 begin
   if Event is TCourseCreatedDomainEvent then
   begin
-    courseCreatedDomainEvent := TEvent<TCourseCreatedDomainEvent>.Create(Event as TCourseCreatedDomainEvent);
-    GlobalEventBus.Post(courseCreatedDomainEvent as IEvent<TCourseCreatedDomainEvent>);
+    ev1 := Event as TCourseCreatedDomainEvent;
+    body := ev1.ToPrimitive();
+    ev2 := TCourseCreatedDomainEvent.FromPrimitive(ev1.AggregateId, ev1.EventId, ev1.OccurredOn, body);
+//    courseCreatedDomainEvent := TEvent<TCourseCreatedDomainEvent>.Create(Event as TCourseCreatedDomainEvent);
+//    body := (Event as TCourseCreatedDomainEvent).FromPrimitive.ToPrimitive;
+//    GlobalEventBus.Post(courseCreatedDomainEvent as IEvent<TCourseCreatedDomainEvent>);
     Exit;
   end;
 end;

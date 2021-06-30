@@ -37,7 +37,7 @@ begin
   GlobalEventBus.RegisterSubscriberForEvents(Self);
 
   creator:= GlobalContainer.Resolve<TCourseCreator>;
-  creator.Invoke(StrToInt(Self.LabeledEdit_Id.Text), Self.LabeledEdit_Name.Text);
+  creator.Invoke(StrToInt(Self.LabeledEdit_Id.Text), Self.LabeledEdit_Name.Text, Now);
   creator.Free;
 end;
 

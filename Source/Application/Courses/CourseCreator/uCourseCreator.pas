@@ -12,7 +12,7 @@ type
     FEventBus: IDomainEventBus;
   public
     constructor Create(Repository: ICourseRepository; EventBus: IDomainEventBus);
-    procedure Invoke(Id: Integer; Name: String);
+    procedure Invoke(Id: Integer; Name: String; Duration: TDateTime);
   end;
 
 implementation
@@ -28,11 +28,11 @@ begin
   Self.FEventBus := EventBus;
 end;
 
-procedure TCourseCreator.Invoke(Id: Integer; Name: String);
+procedure TCourseCreator.Invoke(Id: Integer; Name: String; Duration: TDateTime);
 var
   course: TCourse;
 begin
-  course := TCourse.Create(Id, Name);
+  course := TCourse.Create(Id, Name, Duration);
   Self.FRepository.Save(course);
   Self.FEventBus.Publish(course.PullDomainEvents);
 end;
